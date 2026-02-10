@@ -1,6 +1,6 @@
 FROM node
-ENV MONGO-DB USERNAME=admin \
-    MONGO-DB-PASSWORD=password
-RUN mkdir -p /home/app
-COPY . /home/app
-CMD ["node","/home/app/server.js"]
+WORKDIR /home/app
+RUN npm install express mongoose body-parser multer
+COPY . .
+EXPOSE 3000
+CMD ["node","server.js"]
